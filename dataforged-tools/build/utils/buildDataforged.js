@@ -31,6 +31,17 @@ export function buildDataforged(gamespace = Gamespace.Starforged) {
             };
             break;
         }
+        case Gamespace.SunderedIsles: {
+            data = {
+                // $schema: "./schema.json",
+                "Asset Types": assets,
+                Encounters: encounters,
+                "Move Categories": moves,
+                "Oracle Categories": oracles,
+                "Setting Truths": truths
+            };
+            break;
+        }
         case Gamespace.Ironsworn: {
             data = {
                 // $schema: "./schema.json",

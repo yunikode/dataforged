@@ -4,6 +4,7 @@
  */
 export declare enum Gamespace {
     Starforged = "Starforged",
+    SunderedIsles = "SunderedIsles",
     Ironsworn = "Ironsworn"
 }
 //# sourceMappingURL=Gamespace.d.ts.map

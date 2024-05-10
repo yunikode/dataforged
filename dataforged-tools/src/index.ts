@@ -6,10 +6,11 @@ export * from "@classes/index.js";
 export * from "@constants/index.js";
 export * from "@game_objects/index.js";
 export * from "@utils/index.js";
-import type { Ironsworn, Starforged } from "@json_out/GameData.js";
+import type { Ironsworn, Starforged, SunderedIsles } from "@json_out/GameData.js";
 
 import IS from "./json/ironsworn/datasworn.json" assert {type: "json"};
 import SF from "./json/starforged/dataforged.json" assert {type: "json"};
+import SI from "./json/sunderedIsles/dataforged.json" assert {type: "json"};
 
 /**
  * @public
@@ -18,6 +19,10 @@ const starforged = SF as Starforged;
 /**
  * @public
  */
+const sunderedIsles = SI as SunderedIsles;
+/**
+ * @public
+ */
 const ironsworn = IS as unknown as Ironsworn;
 
-export { starforged, ironsworn };
+export { starforged, ironsworn,sunderedIsles };

@@ -17,6 +17,10 @@ export declare const SF_PATH: string;
 /**
  * @internal
  */
+export declare const SI_PATH: string;
+/**
+ * @internal
+ */
 export declare const JSON_PATHS: string[];
 /**
  * @internal

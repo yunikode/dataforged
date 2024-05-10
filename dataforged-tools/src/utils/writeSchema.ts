@@ -63,6 +63,11 @@ const schemasToWrite: {typeName: string, outFiles: string[], declarations: strin
     typeName: "Ironsworn",
     outFiles: [ "../dist/ironsworn/schema.json", "../src/ironsworn/schema.json", "./src/json/ironsworn/schema.json" ],
     declarations: jsonDeclarations
+  },
+  {
+    typeName: "SunderedIsles",
+    outFiles: [ "../dist/sunderedIsles/schema.json", "../src/sunderedIsles/schema.json", "./src/json/sunderedIsles/schema.json" ],
+    declarations: jsonDeclarations
   }
 ];
 

@@ -1,7 +1,7 @@
 import type { EncounterNatureInfo } from "@classes/cyclopedia/EncounterNatureInfo.js";
 import type { EncounterStarforged } from "@classes/index.js";
 import { Gamespace } from "@json_out/index.js";
-import type { Ironsworn , Starforged } from "@json_out/index.js";
+import type { Ironsworn , Starforged, SunderedIsles } from "@json_out/index.js";
 import { buildAssets } from "@utils/buildAssets.js";
 import { buildEncounters } from "@utils/buildEncounters.js";
 import { buildMoves } from "@utils/buildMoves.js";
@@ -22,7 +22,7 @@ export function buildDataforged(gamespace: Gamespace = Gamespace.Starforged) {
   const oracles = buildOracles(gamespace);
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const truths = buildTruths(gamespace);
-  let data: Ironsworn|Starforged;
+  let data: Ironsworn|Starforged|SunderedIsles;
   switch (gamespace) {
     case Gamespace.Starforged: {
       data = {
@@ -34,6 +34,16 @@ export function buildDataforged(gamespace: Gamespace = Gamespace.Starforged) {
         "Setting Truths": truths
       } as Starforged;
       break;}
+      case Gamespace.SunderedIsles: {
+        data = {
+          // $schema: "./schema.json",
+          "Asset Types": assets,
+          Encounters: encounters as EncounterStarforged[],
+          "Move Categories": moves,
+          "Oracle Categories": oracles,
+          "Setting Truths": truths
+        } as SunderedIsles;
+        break;}
     case Gamespace.Ironsworn:{
       data = {
         // $schema: "./schema.json",

@@ -17,7 +17,10 @@ export const IS_PATH = MASTER_DATA_PATH + "/Ironsworn";
  * @internal
  */
 export const SF_PATH = MASTER_DATA_PATH + "/Starforged";
-
+/**
+ * @internal
+ */
+export const SI_PATH = MASTER_DATA_PATH + "/SunderedIsles";
 /**
  * @internal
  */

@@ -18,12 +18,13 @@
     "build": "yarn compile && yarn schema",
     "compile": "yarn flush && npx ttsc --project ./tsconfig.json",
     "schema": "yarn dts && node ./build/utils/writeSchema.js",
-    "render-json": "yarn render-json-sf && yarn render-json-is",
+    "render-json": "yarn render-json-sf && yarn render-json-is && yarn render-json-si",
     "flush": "rm -R ./build && mkdir ./build",
     "flush-image": "rm -R ./img && mkdir ./img",
     "dts": "api-extractor run -c ./api-extractor.json && cp ../src/types/index.d.ts ../dist/types/index.d.ts",
     "render-json-sf": "node ./build/start-starforged.js --enable-source-maps",
     "render-json-is": "node ./build/start-ironsworn.js --enable-source-maps",
+    "render-json-si": "node ./build/start-sunderedIsles.js --enable-source-maps",
     "render-md-sf": "node ./build/start-md.js",
     "docs": "npx typedoc --name 'Dataforged API' "
   },
@@ -68,7 +69,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-sort-class-members": "^1.14.1",
     "eslint-plugin-tsdoc": "^0.2.14",
-    "ts-patch": "^3.0.0-beta3"
+    "ts-patch": "^3.1.2"
   },
   "dependencies": {
     "@microsoft/api-extractor": "^7.34.4",
@@ -86,7 +87,6 @@
     "terminal-kit": "^2.4.0",
     "ts-node": "^10.5.0",
     "tslog": "^3.3.3",
-    "ttypescript": "^1.5.13",
     "typed-regex": "^0.0.8",
     "typedoc": "^0.24.4",
     "typescript": "4.8",

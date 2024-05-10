@@ -29,6 +29,12 @@ export function buildTruths<G extends Gamespace>(gamespace: G) {
       buildLog(buildTruths, `Finished building ${truths.length} setting truth categories.`);
       return truths;
     }
+    case Gamespace.SunderedIsles: {
+      const truthsRoot = concatWithYamlRefs(undefined, filePath) as ITruthRootYaml;
+      const truths = truthsRoot["Setting Truths"].map(item => new SettingTruth(item, truthsRoot.Source, gamespace));
+      buildLog(buildTruths, `Finished building ${truths.length} setting truth categories.`);
+      return truths;
+    }
     default:
       throw new Error();
   }

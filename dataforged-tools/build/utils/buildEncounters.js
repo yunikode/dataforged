@@ -19,11 +19,15 @@ export function buildEncounters(gamespace) {
     const encounterRoot = concatWithYamlRefs(undefined, ...encounterFiles);
     switch (gamespace) {
         case Gamespace.Starforged: {
-            json = encounterRoot.Encounters.map(enc => new EncounterStarforged(enc, encounterRoot.Source));
+            json = encounterRoot.Encounters.map((enc) => new EncounterStarforged(enc, encounterRoot.Source));
+            break;
+        }
+        case Gamespace.SunderedIsles: {
+            json = encounterRoot.Encounters.map((enc) => new EncounterStarforged(enc, encounterRoot.Source));
             break;
         }
         case Gamespace.Ironsworn: {
-            json = encounterRoot.Encounters.map(enc => new EncounterNatureInfo(enc, encounterRoot.Source));
+            json = encounterRoot.Encounters.map((enc) => new EncounterNatureInfo(enc, encounterRoot.Source));
             break;
         }
         default:
@@ -32,6 +36,8 @@ export function buildEncounters(gamespace) {
     buildLog(buildEncounters, `Finished building ${encounterStats(gamespace, json)}`);
     switch (gamespace) {
         case Gamespace.Starforged:
+            return json;
+        case Gamespace.SunderedIsles:
             return json;
         case Gamespace.Ironsworn:
             return json;

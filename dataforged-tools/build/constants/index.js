@@ -17,6 +17,10 @@ export const SF_PATH = MASTER_DATA_PATH + "/Starforged";
 /**
  * @internal
  */
+export const SI_PATH = MASTER_DATA_PATH + "/SunderedIsles";
+/**
+ * @internal
+ */
 export const JSON_PATHS = ["../dist", "../src", "./src/json", "./build/json"];
 /**
  * @internal

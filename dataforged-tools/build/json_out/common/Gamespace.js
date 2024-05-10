@@ -5,6 +5,7 @@
 export var Gamespace;
 (function (Gamespace) {
     Gamespace["Starforged"] = "Starforged";
+    Gamespace["SunderedIsles"] = "SunderedIsles";
     Gamespace["Ironsworn"] = "Ironsworn";
 })(Gamespace = Gamespace || (Gamespace = {}));
 //# sourceMappingURL=Gamespace.js.map

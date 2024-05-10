@@ -30,3 +30,11 @@ export interface Ironsworn extends GameDataRoot {
   "Encounters": IEncounterNatureInfo[];
   "Setting Truths"?: ISettingTruth[];
 }
+/**
+ * Root object for *Ironsworn: Starforged* game data.
+ * @public
+ */
+export interface SunderedIsles extends GameDataRoot {
+  "Encounters": IEncounterStarforged[];
+  "Setting Truths": ISettingTruth[];
+}

@@ -7,12 +7,24 @@ import { encounterStats } from "@utils/dataforgedStats.js";
 import { badJsonError } from "@utils/logging/badJsonError.js";
 import { buildLog } from "@utils/logging/buildLog.js";
 import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
-import type { IEncounterNatureInfoYaml, IEncounterStarforgedYaml, IYamlWithRef } from "@yaml_in/index.js";
+import type {
+  IEncounterNatureInfoYaml,
+  IEncounterStarforgedYaml,
+  IYamlWithRef,
+} from "@yaml_in/index.js";
 import fg from "fast-glob";
 
-type EncountersJson<G extends Gamespace> = G extends Gamespace.Starforged ? EncounterStarforged[] : G extends Gamespace.Ironsworn ? EncounterNatureInfo[] : never;
+type EncountersJson<G extends Gamespace> = G extends Gamespace.Starforged
+  ? EncounterStarforged[]
+  : G extends Gamespace.Ironsworn
+  ? EncounterNatureInfo[]
+  : never;
 
-type EncountersYaml<G extends Gamespace> = G extends Gamespace.Starforged ? IEncounterStarforgedYaml[] : G extends Gamespace.Ironsworn ? IEncounterNatureInfoYaml[] : never;
+type EncountersYaml<G extends Gamespace> = G extends Gamespace.Starforged
+  ? IEncounterStarforgedYaml[]
+  : G extends Gamespace.Ironsworn
+  ? IEncounterNatureInfoYaml[]
+  : never;
 
 interface IEncounterRoot<G extends Gamespace> extends IYamlWithRef {
   Name: string;
@@ -26,26 +38,47 @@ interface IEncounterRoot<G extends Gamespace> extends IYamlWithRef {
  */
 export function buildEncounters<G extends Gamespace>(gamespace: G) {
   buildLog(buildEncounters, "Building encounters...");
-  const encounterFiles = fg.sync(`${MASTER_DATA_PATH as string}/${gamespace}/Encounters*.(yml|yaml)`, { onlyFiles: true });
+  const encounterFiles = fg.sync(
+    `${MASTER_DATA_PATH as string}/${gamespace}/Encounters*.(yml|yaml)`,
+    { onlyFiles: true }
+  );
   console.log(encounterFiles);
   let json: EncounterStarforged[] | EncounterNatureInfo[];
-  const encounterRoot = concatWithYamlRefs(undefined, ...encounterFiles) as IEncounterRoot<G>;
+  const encounterRoot = concatWithYamlRefs(
+    undefined,
+    ...encounterFiles
+  ) as IEncounterRoot<G>;
 
   switch (gamespace) {
     case Gamespace.Starforged: {
-      json = (encounterRoot.Encounters as IEncounterStarforgedYaml[]).map(enc => new EncounterStarforged(enc, encounterRoot.Source));
+      json = (encounterRoot.Encounters as IEncounterStarforgedYaml[]).map(
+        (enc) => new EncounterStarforged(enc, encounterRoot.Source)
+      );
+      break;
+    }
+    case Gamespace.SunderedIsles: {
+      json = (encounterRoot.Encounters as IEncounterStarforgedYaml[]).map(
+        (enc) => new EncounterStarforged(enc, encounterRoot.Source)
+      );
       break;
     }
     case Gamespace.Ironsworn: {
-      json = (encounterRoot.Encounters as IEncounterNatureInfoYaml[]).map(enc => new EncounterNatureInfo(enc, encounterRoot.Source));
+      json = (encounterRoot.Encounters as IEncounterNatureInfoYaml[]).map(
+        (enc) => new EncounterNatureInfo(enc, encounterRoot.Source)
+      );
       break;
     }
     default:
       throw badJsonError(buildEncounters);
   }
-  buildLog(buildEncounters, `Finished building ${encounterStats(gamespace, json)}`);
+  buildLog(
+    buildEncounters,
+    `Finished building ${encounterStats(gamespace, json)}`
+  );
   switch (gamespace) {
     case Gamespace.Starforged:
+      return json as EncounterStarforged[];
+    case Gamespace.SunderedIsles:
       return json as EncounterStarforged[];
     case Gamespace.Ironsworn:
       return json as EncounterNatureInfo[];

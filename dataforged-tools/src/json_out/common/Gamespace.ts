@@ -4,5 +4,6 @@
  */
 export enum Gamespace {
     Starforged = "Starforged",
+    SunderedIsles = "SunderedIsles",
     Ironsworn = "Ironsworn"
 }

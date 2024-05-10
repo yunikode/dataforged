@@ -205,6 +205,7 @@ export declare enum GameObjectType {
  */
 export declare enum Gamespace {
     Starforged = "Starforged",
+    SunderedIsles = "SunderedIsles",
     Ironsworn = "Ironsworn"
 }
 
@@ -2807,6 +2808,20 @@ export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends
  * @public
  */
 export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+
+/**
+ * Root object for *Ironsworn: Starforged* game data.
+ * @public
+ */
+export declare interface SunderedIsles extends GameDataRoot {
+    "Encounters": IEncounterStarforged[];
+    "Setting Truths": ISettingTruth[];
+}
+
+/**
+ * @public
+ */
+export declare const sunderedIsles: SunderedIsles;
 
 /**
  * Represents a tuple: a typed array with a fixed length.

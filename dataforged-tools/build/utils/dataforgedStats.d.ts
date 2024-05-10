@@ -4,7 +4,7 @@ import type { GameDataRoot, IEncounterNatureInfo, IEncounterStarforged, IOracleC
  * Extracts statistics on Ironsworn game data.
  * @param param0
  */
-export declare function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }: GameDataRoot): string;
+export declare function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths, }: GameDataRoot): string;
 /**
  * Creates a string of oracle stats for use in build messages.
  * @param oracles
